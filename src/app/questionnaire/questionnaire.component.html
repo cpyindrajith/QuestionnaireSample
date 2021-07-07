@@ -1,0 +1,73 @@
+<div id="loader-container" *ngIf="loader">
+    <div id="loader"></div>
+</div>
+<div class="scrollTabBody slideBodyOwl slider-for">
+    <div class="stBody cardBorder">
+        <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)" animationDuration="0ms" class="custom-tab">
+            <mat-tab [label]="t.Title" *ngFor="let t of studentSubSessionList;let i=index">
+                <div class="statuebarPage">
+                    <div class="progerssWidget">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+                                aria-valuemax="100"
+                                [style.width]="currentPageNumber/studentSubsessionDetails.Subsession.QuestionDetails.length*100+'%'">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="widgetPagestatus">
+                        {{currentPageNumber}} of {{studentSubsessionDetails.Subsession.QuestionDetails.length}} pages
+                    </div>
+                </div>
+                <div class="question-wrapper">
+                    <div class="squestionTableRow">
+                        <div class="gtRow">
+                            <div class="gtList">Question No</div>
+                            <div class="gtList gLabel">
+                                {{studentSubsessionDetails.Subsession.SubsessionDeatils.NotationOne}}</div>
+                            <div class="gtList gLabel">
+                                {{studentSubsessionDetails.Subsession.SubsessionDeatils.NotationTwo}}</div>
+                        </div>
+                        <div *ngFor="let qs of studentSubsessionDetails.Subsession.QuestionDetails;let f=first;let i=index">
+                            <div [ngClass]="(currentPageNumber==qs.PageNumber)?'':'hidden'">
+                                <div *ngFor="let ql of qs.QuestionDetailsModel;">
+                                    <div class="gtRow">
+                                        <div class="gtList">{{ql.Question}}</div>
+                                        <div class="gtList">
+                                            <div class="gRadioRow">
+                                                <input type="radio" [id]="ql.QuestionID" [name]="ql.Question"
+                                                    [value]="studentSubsessionDetails.Subsession.SubsessionDeatils.NotationOne"
+                                                    [(ngModel)]="ql.Selected">
+                                                <label [for]="ql.QuestionID"></label>
+                                            </div>
+                                        </div>
+                                        <div class="gtList">
+                                            <div class="gRadioRow">
+                                                <input type="radio" [id]="ql.StudentQuestionID" [name]="ql.Question"
+                                                    [value]="studentSubsessionDetails.Subsession.SubsessionDeatils.NotationTwo"
+                                                    [(ngModel)]="ql.Selected">
+                                                <label [for]="ql.StudentQuestionID"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-groups">
+                                    <button mat-raised-button class="btn btn-orange"
+                                        (click)="currentPageNumber=currentPageNumber-1"
+                                        [disabled]="currentPageNumber==1">Prev</button>
+                                    <button mat-raised-button class="btn btn-orange" (click)="nextButtonClicked(i)"
+                                        *ngIf="currentPageNumber<studentSubsessionDetails.Subsession.QuestionDetails.length">Next</button>
+                                    <button mat-raised-button class="btn btn-orange" (click)="saveButtonClicked(i)"
+                                        *ngIf="currentPageNumber==studentSubsessionDetails.Subsession.QuestionDetails.length">Save</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+
+</div>

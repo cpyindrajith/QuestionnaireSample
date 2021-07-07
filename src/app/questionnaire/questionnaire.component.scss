@@ -1,0 +1,58 @@
+.hidden {
+  display: none;
+}
+.btn-orange {
+  background: #ed7d3b;
+  width: 140px;
+  height: 41px;
+  font-size: 14px;
+  color: #fff;
+  -webkit-transition: ease-in-out 0.4s;
+  border-radius: 4px;
+  margin-left: 9px;
+}
+
+:host ::ng-deep .custom-tab .mat-tab-label {
+  height: 69px;
+}
+:host ::ng-deep .custom-tab .mat-tab-label .mat-tab-label-content {
+  color: #888888;
+}
+:host ::ng-deep .custom-tab .mat-tab-body-content {
+  border: solid 1px #f3f3f3;
+  padding: 22px;
+  border-radius: 5px;
+}
+:host
+  ::ng-deep
+  .custom-tab
+  .mat-tab-header-pagination-controls-enabled
+  .mat-tab-header-pagination {
+  display: flex;
+  background-color: #dddddd;
+  height: 28px;
+  align-self: center;
+  box-shadow: none;
+}
+:host
+  ::ng-deep
+  .custom-tab
+  .mat-tab-header-pagination-disabled
+  .mat-tab-header-pagination-chevron {
+  border-color: rgb(255 255 255);
+}
+:host ::ng-deep .custom-tab.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #4f7482;
+  height: 1px;
+}
+:host ::ng-deep .custom-tab .mat-tab-header,
+.mat-tab-nav-bar {
+  border-bottom: 0px solid rgba(0, 0, 0, 0.12);
+}
+:host ::ng-deep .custom-tab .mat-tab-label {
+  font-size: 16px;
+}
+:host ::ng-deep .custom-tab .mat-tab-label-active .mat-tab-label-content {
+  color: #527383;
+}
